@@ -42,7 +42,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div className="min-h-screen bg-white">
+      <nav className="bg-blue-900 text-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <a href="/" className="text-xl font-bold">DoRight Handyman</a>
+            <div className="flex space-x-8">
+              <a href="/" className="hover:text-blue-200">Home</a>
+              <a href="/about" className="hover:text-blue-200">About</a>
+              <a href="/contact" className="hover:text-blue-200">Contact</a>
+              <a href="/book" className="hover:text-blue-200">Book</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main><Outlet /></main>
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p>&copy; 2024 DoRight Handyman. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
