@@ -1,10 +1,17 @@
 import { useState } from 'react'
 
+export interface ContactUsFormData {
+  name: string
+  phone: string
+  email: string
+  serviceDetails: string
+}
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactUsFormData>({
     name: '',
     phone: '',
-    email: ''
+    email: '',
+    serviceDetails: ''
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -13,58 +20,70 @@ export default function Contact() {
     alert('Thank you! We will contact you soon.')
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
   return (
-    <div className="py-16">
-      <div className="max-w-2xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-12">Contact Us</h1>
-        
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8 space-y-6">
+    <div className="py-16 bg-slate-500">
+      <div className="mx-auto max-w-2xl px-4">
+        <h1 className="mb-12 text-center text-4xl font-bold">Contact Us</h1>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 rounded-lg bg-white p-8 shadow-lg"
+        >
           <div>
-            <label className="block text-sm font-medium mb-2">Name *</label>
+            <label className="mb-2 block text-sm font-medium text-gray-600">Name *</label>
             <input
               type="text"
               name="name"
+              placeholder="Name"
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-amber-400 border-stone-900"
             />
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium mb-2">Phone *</label>
+            <label className="mb-2 block text-sm font-medium text-gray-600">Phone *</label>
             <input
               type="tel"
               name="phone"
               required
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-amber-400 border-stone-900"
             />
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium mb-2">Email *</label>
+            <label className="mb-2 block text-sm font-medium text-gray-600 ">Email *</label>
             <input
               type="email"
               name="email"
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-amber-400 border-stone-900"
             />
           </div>
-          
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-600 ">Service Details</label>
+            <textarea
+                name="details"
+                value={formData.serviceDetails}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-amber-400 border-stone-900"
+            />
+          </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold"
+            className="w-full rounded-lg bg-stone-800 py-3 font-semibold text-white hover:bg-amber-200"
           >
             Submit Lead
           </button>
