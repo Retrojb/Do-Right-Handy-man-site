@@ -4,6 +4,23 @@
   --font-sans:
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --spacing-50: 4px;
+  --spacing-100: 8px;
+  --spacing-200: 12px;
+  --spacing-300: 16px;
+  --spacing-400: 20px;
+  --spacing-500: 24px;
+  --spacing-600: 28px;
+  --spacing-700: 32px;
+  --spacing-800: 36px;
+  --spacing-900: 40px;
+  --spacing-1000: 44px;
+  --spacing-1100: 48x;
+  --spacing-1200: 52px;
+  --spacing-1300: 56px;
+  --spacing-1400: 60px;
+  --spacing-1500: 64px;
+
 }
 
 html,

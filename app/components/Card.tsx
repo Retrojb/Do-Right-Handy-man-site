@@ -1,3 +1,5 @@
+import {tv} from "tailwind-variants";
+
 interface CardProps {
   heading: string
   icon?: string
@@ -5,17 +7,23 @@ interface CardProps {
   body: string
 }
 
+const card = tv({
+    base: 'rounded-sm bg-stone-200 p-[20px] md:w-[300px] sm:w-[150px]'
+})
 export default function Card({ heading, icon, image, body }: CardProps) {
   return (
-    <div className="rounded-lg bg-white p-6 shadow-lg">
+    <div className={card()}>
       {image && (
         <img src={image} alt={heading} className="mb-4 h-48 w-full rounded object-cover" />
       )}
       <div className="flex items-center gap-3 mb-3">
         {icon && <div className="text-4xl">{icon}</div>}
-        <h3 className="text-xl font-semibold">{heading}</h3>
+        <h3 className="text-2xl text-gray-600 font-semibold">{heading}</h3>
       </div>
-      <p className="text-gray-600">{body}</p>
+        <div>
+            <p className="text-gray-600">{body}</p>
+
+        </div>
     </div>
   )
 }

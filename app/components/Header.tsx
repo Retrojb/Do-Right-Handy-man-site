@@ -18,6 +18,7 @@ export default function Header() {
             <a href="/about" className="hover:text-blue-200">About</a>
             <a href="/contact" className="hover:text-blue-200">Contact</a>
             <a href="/book" className="hover:text-blue-200">Book</a>
+            <a href="/faq" className="hover:text-blue-200">FAQ</a>
           </div>
           
           {/* Mobile Hamburger */}
@@ -38,6 +39,7 @@ export default function Header() {
             <a href="/about" className="block py-2 hover:text-blue-200">About</a>
             <a href="/contact" className="block py-2 hover:text-blue-200">Contact</a>
             <a href="/book" className="block py-2 hover:text-blue-200">Book</a>
+            <a href="/faq" className="block py-2 hover:text-blue-200">FAQ</a>
           </div>
         )}
       </div>

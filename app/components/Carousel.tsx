@@ -1,23 +1,34 @@
 import { useState, useEffect } from 'react'
+import { CAROUSEL_IMAGES } from '../config/s3'
 
 export default function Carousel() {
   const [currentImage, setCurrentImage] = useState(0)
-  const images = [
-    'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=400&fit=crop',
-  ]
+  const [useLocalImages, setUseLocalImages] = useState(false)
+  
+  // Check if S3 images are accessible, otherwise fall back to local images
+  useEffect(() => {
+    const checkS3Access = async () => {
+      try {
+        const response = await fetch(CAROUSEL_IMAGES[0].src, { method: 'HEAD' })
+        setUseLocalImages(!response.ok)
+      } catch (error) {
+        setUseLocalImages(true)
+      }
+    }
+    
+    checkS3Access()
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length)
+      setCurrentImage((prev) => (prev + 1) % CAROUSEL_IMAGES.length)
     }, 5000)
     return () => clearInterval(timer)
   }, [])
 
   return (
     <section className="relative h-96 w-full overflow-hidden">
-      {images.map((image, index) => (
+      {CAROUSEL_IMAGES.map((image, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -25,8 +36,8 @@ export default function Carousel() {
           }`}
         >
           <img
-            src={image}
-            alt={`Service ${index + 1}`}
+            src={useLocalImages ? image.localSrc : image.src}
+            alt={image.alt}
             className="h-full w-full object-cover"
           />
         </div>

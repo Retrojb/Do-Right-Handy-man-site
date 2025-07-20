@@ -28,8 +28,8 @@ export default function Contact() {
   }
 
   return (
-    <div className="py-16 bg-slate-500">
-      <div className="mx-auto max-w-2xl px-4">
+    <div className="flex-1 flex-col py-16  bg-slate-500">
+      <div className=" mx-auto max-w-2xl px-4">
         <h1 className="mb-12 text-center text-4xl font-bold">Contact Us</h1>
 
         <form

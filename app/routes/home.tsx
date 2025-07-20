@@ -16,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
 
   return (
-    <div>
+    <div className='flex-1 flex-col flex bg-stone-800'>
       <section className="bg-stone-800 py-20 text-slate-200">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <h1 className="mb-6 text-5xl font-bold">
